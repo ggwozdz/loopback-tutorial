@@ -21,6 +21,7 @@
   },
   "aclConfig": {
     "publicMethods": [
+      "Couple.token",
       "Auth.login",
       "Auth.register",
       "Auth.passwordReset",

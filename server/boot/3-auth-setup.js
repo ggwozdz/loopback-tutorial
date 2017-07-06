@@ -50,6 +50,13 @@ module.exports = function(app) {
   app.remotes().phases
     .addBefore('invoke', 'options-from-request')
     .use(function(ctx, next) {
+      const acl = app.acl;
+      const methodName = ctx.methodString;
+
+      if (acl.isPublic(methodName)) {
+        return next();
+      }
+
       let accessToken = ctx.req.query.access_token || ctx.req.headers.authorization;
       let authConfig  = app.get('authConfig');
 

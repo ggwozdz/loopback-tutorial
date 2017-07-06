@@ -18,11 +18,11 @@ module.exports = function(Couple) {
         return _.merge(loginResult, {iss: 'myapp',  sub: loginResult.userId});
       })
       .then(tokenContent => {
-          return {
-            token_type: 'bearer',
-            access_token: jwt.encode(tokenContent, jwtSignature),
-            expires_in: tokenContent.ttl
-          };
+        return {
+          token_type: 'bearer',
+          access_token: jwt.encode(tokenContent, jwtSignature),
+          expires_in: tokenContent.ttl
+        };
       });
   };
 
