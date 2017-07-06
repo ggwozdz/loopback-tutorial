@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "Couple": {
+    "dataSource": "file",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+
+  "AccessToken": {
+    "dataSource": "file",
+    "public": false
+  },
+
+  "Task": {
+    "dataSource": "file",
+    "public": true
+  }
+}

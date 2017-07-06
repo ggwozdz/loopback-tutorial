@@ -1,0 +1,18 @@
+cache:
+  paths:
+    - cache
+
+release:
+  variables:
+    VERSION: $CI_BUILD_TAG
+    NAME: "wedding-planner"
+  script:
+    - docker login -u $docker_neoteric_login -p $docker_neoteric_pass docker.neoteric.eu
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.neoteric.eu
+    - sed -i -e "s/__appVersion__/$VERSION/g" ./Dockerfile
+    - docker build -t registry.neoteric.eu/tutorial/$NAME:$VERSION .
+    - docker tag registry.neoteric.eu/tutorial/$NAME:$VERSION registry.neoteric.eu/tutorial/$NAME:latest
+    - docker push registry.neoteric.eu/tutorial/$NAME:$VERSION
+    - docker push registry.neoteric.eu/tutorial/$NAME:latest
+  only:
+    - tags

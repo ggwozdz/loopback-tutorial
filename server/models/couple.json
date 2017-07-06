@@ -1,0 +1,58 @@
+{
+  "name": "Couple",
+  "plural": "couples",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "hisName": {
+      "type": "string",
+      "required": true
+    },
+    "herName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tasks": {
+      "type": "hasMany",
+      "model": "Task",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "token": {
+      "accepts": [
+        {
+          "arg": "credentials",
+          "type": "object",
+          "required": true,
+          "description": "",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "token",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "genrates auth token",
+      "http": [
+        {
+          "path": "/token",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

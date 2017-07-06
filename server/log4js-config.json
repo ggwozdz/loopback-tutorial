@@ -1,0 +1,7 @@
+{
+  "appenders": [
+    { "type": "console" },
+    { "type": "file", "filename": "./logs/output.log" }
+  ],
+  "replaceConsole": true
+}
